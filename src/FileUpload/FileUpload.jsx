@@ -1,4 +1,4 @@
-import { useState, useEffect, React } from 'react'
+import { useState, React } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import './FileUpload.scss'
@@ -11,20 +11,31 @@ import { storage } from "./firebase";
 const FileUpload = () => {
     const [initialData, setInitialData] = useState([{}])
     const [progress, setProgress] = useState(0);
+
     const formHandler = (e) => {
       e.preventDefault();
       const file = e.target.files[0];
       uploadFiles(file);
-      update();
     };
 
-    const update = () => {
-      axios.get('http://localhost:3000/details').then((res) => {
+    const addRecruit = () => {
+      axios.post("http://localhost:8080/insert", {
+        college_name:initialData.college_name, company_names:initialData.company_names,
+            degree:initialData.degree, designation:initialData.designation,
+            email:initialData.email, experience:initialData.experience,
+            mobile_number:initialData.mobile_number, name:initialData.name,
+            no_of_pages:initialData.no_of_pages, skills:initialData.skills,
+            total_experience:initialData.total_experience
+      })
+    }
+
+    const update = async () => {
+      await axios.get('http://localhost:3000/details').then((res) => {
         setInitialData(res.data);
       });
+      addRecruit();
     };
 
-    useEffect(update, []);
   
     const uploadFiles = (file) => {
       //
@@ -43,16 +54,15 @@ const FileUpload = () => {
         },
         (error) => console.log(error),
         () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(() => {
-            axios.post('http://localhost:3000/filePath', {
+          getDownloadURL(uploadTask.snapshot.ref).then(async () => {
+            await axios.post('http://localhost:3000/filePath', {
               'path': file.name
             }).then(() => console.log(file.name));
+            update();
           });
         }
       );
     };
-
-    
 
     return (
         <>
@@ -70,9 +80,6 @@ const FileUpload = () => {
                 <ProgressBar color={"#ff7979"} width={"150px"} value={Math.round(progress)} max={100} />
                 <p className="main">Supported files</p>
                 <p className="info">PDF, JPG, PNG</p>
-            </div>
-            <div>
-              <h3>Hello {initialData.name}</h3>
             </div>
         </>
     )

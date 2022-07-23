@@ -1,4 +1,4 @@
-#!D:\React\Candetect\venv\Scripts\python.exe
+#!D:\Test\Candetect--A-ReactJs-Flask-backend-and-MongoDb-Project\venv\Scripts\python.exe
 
 import docx2txt
 

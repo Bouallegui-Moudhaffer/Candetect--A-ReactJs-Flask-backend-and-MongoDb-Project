@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\React\Candetect\venv"
+VIRTUAL_ENV="D:\Test\Candetect--A-ReactJs-Flask-backend-and-MongoDb-Project\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

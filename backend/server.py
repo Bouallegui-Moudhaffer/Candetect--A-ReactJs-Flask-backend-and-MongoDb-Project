@@ -3,6 +3,7 @@ from flask import request
 from pyresparser import ResumeParser
 import pyrebase
 
+
 config = {
     "apiKey": "AIzaSyAVMKtmiL9Mxj9tK9lj4HppzKO09iLC6pE",
     "authDomain": "candetect-838ef.firebaseapp.com",
@@ -31,7 +32,7 @@ def get_path():
 # Details API Get Route
 @app.route("/details")
 def details():
-    path = r"D:\React\Candetect\backend\files\Resume.pdf"
+    path = r"D:\Test\Candetect--A-ReactJs-Flask-backend-and-MongoDb-Project\backend\files\Resume.pdf"
     resume_data = ResumeParser(path).get_extracted_data()
     return {"college_name":resume_data.get('college_name'),
             "company_names":resume_data.get('company_names'),
