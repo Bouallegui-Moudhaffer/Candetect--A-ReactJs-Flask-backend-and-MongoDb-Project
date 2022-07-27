@@ -1,4 +1,4 @@
-#!D:\Test\Candetect--A-ReactJs-Flask-backend-and-MongoDb-Project\venv\Scripts\python.exe
+#!D:\React\project_syncfusion_dashboard\venv\Scripts\python.exe
 from __future__ import with_statement
 import os
 import sys

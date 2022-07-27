@@ -1,4 +1,4 @@
-#!D:\Test\Candetect--A-ReactJs-Flask-backend-and-MongoDb-Project\venv\Scripts\python.exe
+#!D:\React\project_syncfusion_dashboard\venv\Scripts\python.exe
 """A command line tool for extracting text and images from PDF and
 output it to plain text, html, xml or tags."""
 import argparse

@@ -45,7 +45,15 @@ const RecruitSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-})  
+    Status:{
+        type: String,
+        required: false,
+    },
+    StatusBg:{
+        type: String,
+        required: false,
+    },
+})
 
 const Recruit = mongoose.model("recruits", RecruitSchema)
 module.exports = Recruit

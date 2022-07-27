@@ -2,7 +2,7 @@ from flask import Flask
 from flask import request
 from pyresparser import ResumeParser
 import pyrebase
-
+from flask_cors import cross_origin
 
 config = {
     "apiKey": "AIzaSyAVMKtmiL9Mxj9tK9lj4HppzKO09iLC6pE",
@@ -24,6 +24,7 @@ app = Flask(__name__)
 
 # File download Link
 @app.route('/filePath', methods=['POST'])
+@cross_origin()
 def get_path():
     data = request.get_json()["path"]
     storage.child(f"files/{data}").download(f"files/Resume.pdf")
@@ -31,8 +32,9 @@ def get_path():
     
 # Details API Get Route
 @app.route("/details")
+@cross_origin()
 def details():
-    path = r"D:\Test\Candetect--A-ReactJs-Flask-backend-and-MongoDb-Project\backend\files\Resume.pdf"
+    path = r"D:\React\project_syncfusion_dashboard\backend\files\Resume.pdf"
     resume_data = ResumeParser(path).get_extracted_data()
     return {"college_name":resume_data.get('college_name'),
             "company_names":resume_data.get('company_names'),
