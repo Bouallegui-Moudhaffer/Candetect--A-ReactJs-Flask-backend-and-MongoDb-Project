@@ -35,9 +35,9 @@ app.post('/insert', async (req, response) => {
         const recruit = new RecruitModel({college_name:res.data.college_name, company_names:res.data.company_names,
             degree:res.data.degree, designation:res.data.designation,
             email:res.data.email, experience:res.data.experience,
-            mobile_number:res.data.mobile_number, name:res.data.name,
+            mobile_number:res.data.phone_number, name:res.data.name,
             no_of_pages:res.data.no_of_pages, skills:res.data.skills,
-            total_experience:res.data.total_experience});
+            total_experience:res.data.total_experience, Status:'pending', StatusBg:'#FB9678',});
         await recruit.save()
         response.send("inserted data")
       });

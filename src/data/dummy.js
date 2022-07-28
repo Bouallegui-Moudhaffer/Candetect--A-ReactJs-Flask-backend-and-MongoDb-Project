@@ -749,12 +749,6 @@ export const userProfileData = [
 
 export const ordersGrid = [
   {
-    headerText: 'Image',
-    template: gridOrderImage,
-    textAlign: 'Center',
-    width: '120',
-  },
-  {
     field: 'name',
     headerText: 'Name',
     width: '150',
@@ -766,7 +760,7 @@ export const ordersGrid = [
     width: '150',
     textAlign: 'Center',
   },
-  { field: 'phone_number',
+  { field: 'mobile_number',
     headerText: 'Phone Number',
     width: '150',
     textAlign: 'Center',

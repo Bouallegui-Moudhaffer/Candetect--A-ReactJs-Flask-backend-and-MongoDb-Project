@@ -52,7 +52,7 @@ const FileUpload = () => {
       },
       (error) => console.log(error),
       () => {
-        getDownloadURL(uploadTask.snapshot.ref).then(async () => {
+        getDownloadURL(uploadTask.snapshot.ref).then(async (url) => {
           await axios.post('/filePath', {
             'path': file.name
           }).then(() => console.log(file.name));
